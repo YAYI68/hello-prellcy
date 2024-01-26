@@ -4,14 +4,14 @@ import { useAuthContext } from "../context/AuthContext";
 import { useEffect } from "react";
 
 const Login = () => {
-  const { accessToken } = useAuthContext();
+  const { user } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (accessToken) {
+    if (user) {
       navigate(`/`);
     }
-  }, [accessToken, navigate]);
+  }, [user, navigate]);
   return (
     <section className="flex flex-col w-[90%] lg:w-[40%] py-4 px-4 lg:py-[3rem] gap-8">
       <div className="w-full">
