@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useAuthContext } from "../../context/AuthContext";
+import Spinner from "../ui/Spinner";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -100,7 +101,7 @@ const LoginForm = () => {
         type="submit"
         className="p-2 text-center rounded-md w-full bg-primary-purple text-white"
       >
-        Sign in
+        {isLoading ? <Spinner /> : "Sign in"}
       </button>
     </form>
   );

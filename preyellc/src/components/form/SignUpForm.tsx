@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useAuthContext } from "../../context/AuthContext";
+import Spinner from "../ui/Spinner";
 
 const SignUpForm = () => {
   const { getToken } = useAuthContext();
@@ -117,7 +118,7 @@ const SignUpForm = () => {
         type="submit"
         className="p-2 text-center rounded-md w-full bg-primary-purple text-white"
       >
-        Creat account
+        {isLoading ? <Spinner /> : "Creat account"}
       </button>
     </form>
   );
