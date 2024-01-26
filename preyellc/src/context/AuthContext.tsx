@@ -11,7 +11,7 @@ type User = {
 type valueType = {
   user: User;
   setUser: React.Dispatch<React.SetStateAction<boolean>>;
-  handleSetUser: (data: string) => void;
+  handleSetUser: (data: User) => void;
   accessToken: string;
   setAccessToken: React.Dispatch<React.SetStateAction<string>>;
   logout: () => void;
@@ -34,7 +34,7 @@ export function AuthProvider(props: Props) {
     setAccessToken(data);
   };
 
-  const handleSetUser = (user) => {
+  const handleSetUser = (user: User) => {
     setUser(user);
     sessionStorage.setItem("user", JSON.stringify(user));
   };
