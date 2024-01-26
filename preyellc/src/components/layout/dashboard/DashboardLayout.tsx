@@ -13,7 +13,6 @@ const DashboardLayout = () => {
   const navigate = useNavigate();
 
   const logUserOut = async () => {
-    logout();
     try {
       const { data } = await axiosClient.post(
         "/auth/logout",
