@@ -1,7 +1,23 @@
 import React, { createContext, useContext, useState } from "react";
 import Cookies from "js-cookie";
 
-const AuthContext = createContext();
+type User = {
+  email: string;
+  id: string;
+  isActive: boolean;
+  name: string;
+  username: string;
+};
+type valueType = {
+  user: User;
+  setUser: React.Dispatch<React.SetStateAction<boolean>>;
+  handleSetUser: (data: string) => void;
+  accessToken: string;
+  setAccessToken: React.Dispatch<React.SetStateAction<string>>;
+  logout: () => void;
+  getToken: (data: string) => void;
+};
+const AuthContext = createContext(null);
 type Props = {
   children: React.ReactNode;
 };
@@ -12,7 +28,6 @@ export function AuthProvider(props: Props) {
     JSON.parse(sessionStorage.getItem("user"))
   );
   const [accessToken, setAccessToken] = useState(token);
-  const [refreshToken, setRefreshToken] = useState("");
 
   const getToken = (data: string) => {
     Cookies.set("token", data);
@@ -31,14 +46,12 @@ export function AuthProvider(props: Props) {
     setAccessToken("");
   };
 
-  const value = {
+  const value: valueType = {
     user,
     setUser,
     handleSetUser,
     accessToken,
     setAccessToken,
-    refreshToken,
-    setRefreshToken,
     logout,
     getToken,
   };

@@ -7,9 +7,7 @@ import { useAuthContext } from "../../../context/AuthContext";
 import { axiosClient } from "../../../api/axios";
 import { toast } from "react-toastify";
 
-type Props = {};
-
-const DashboardLayout = (props: Props) => {
+const DashboardLayout = () => {
   const [openMobile, setOpenMobile] = useState(false);
   const { logout, accessToken } = useAuthContext();
   const navigate = useNavigate();
